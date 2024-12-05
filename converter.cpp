@@ -8,9 +8,30 @@ int main(){
 	
 	
 	// Open input.txt file in append mode
-	inputFile.open("input.txt", ios::app);
+	inputFile.open("input.txt", ios::in);
 	if(inputFile.is_open()){	
-					
+
+		//instructions to write in txt file
+		inputFile <<"<!-- Hello Developer, this project is created by Aman Sinha you can contact me on sinhaaman655@hotmail.com | follow and star the repo on www.github.com/tranquillite-007--> \n";
+		inputFile <<"<!-- About this project : This is a C++ project to convert or we can say that a project to create HTML, CSS website by just writing some lines in normal English--> \n";	
+		inputFile <<"<!-- Direction to use this project: --> \n";
+		inputFile <<"<!-- Write the statements for your website based on below rules --> \n";
+		inputFile <<"<!-- 1. Write the statement in as shown below: --> \n";
+		inputFile <<"        <!-- $heading = (Heading For The Section)  --> \n";
+		inputFile <<"        <!-- $paragraph = (Paragraph For The Section)  --> \n";
+		inputFile <<"        <!-- $image = (Image URL to add image)  --> \n";
+		inputFile <<"        <!-- $link =(Hypertext)(Link URL to add link)  --> \n";
+		inputFile <<"<!-- 2. After writing all required statement Save the file in project root folder --> \n";
+		inputFile <<"<!-- 3. Run the project by using the converter.exe file in the project folder --> \n";
+		inputFile <<"<!-- 4. Your website will be generated in the project folder with name as index.html--> \n";
+		inputFile <<"<!-- For more syntax statement Rule read the readme.md file of below mentioned github repo --> \n";
+		inputFile <<"<!-- https://github.com/tranquillite-007/txt-to-html-convertor-in-cpp/edit/main/README.md --> \n";
+		inputFile <<"<!-- Don't forget to star the repo for future reference.--> \n";
+		inputFile <<"\n";
+		inputFile <<"<!--####``````````````````````````````````````####-->\n<!--####``````````````````````````````````````####-->\n<!--####``````````````````````````````````````####-->\n";
+		inputFile <<"<!-- Write your statements below, --> \n";
+		inputFile <<"<!-- Good Luck (Happy Coading) --> \n";
+				
 		inputFile.close();
 	}
 	
