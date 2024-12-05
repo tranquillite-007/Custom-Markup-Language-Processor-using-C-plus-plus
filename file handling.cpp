@@ -12,7 +12,7 @@ int main(){
 	}
 	myFile.open("file.txt", ios::app);
 	if(myFile.is_open()){
-		myFile << " second appended line bro ! \n";
+		myFile << " second appended line  ! \n";
 		myFile.close();
 	}
 	fstream newFile;
