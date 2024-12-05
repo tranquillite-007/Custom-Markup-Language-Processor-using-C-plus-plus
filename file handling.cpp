@@ -9,7 +9,8 @@ int main(){
 	
 	// Open input.txt file in append mode
 	inputFile.open("input.txt", ios::app);
-	if(inputFile.is_open()){				
+	if(inputFile.is_open()){	
+					
 		inputFile.close();
 	}
 	
@@ -41,12 +42,13 @@ int main(){
 		//while loop to read all lines from inputFile.txt
 		while(getline(inputFile, line)){
 			
-			// test statement to print h1 tag 
-//			outputFile <<" " << line << " \n";
+			// test statement to print h1 tags
 			outputFile <<"    <h1 style=\"width: max-content; margin: auto; background-color: aqua;\">" << line << "</h1> \n";
 
-			cout<<"congo developer!! the file is created and working properly...  \n";
 		}
+		
+		cout<<"congo developer!! the file is created and working properly...  \n";
+
 		
 		//initial or predefined lines after html body in html file
 		outputFile <<" </body> \n";

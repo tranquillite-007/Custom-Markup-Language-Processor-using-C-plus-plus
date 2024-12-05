@@ -1,2 +1,3 @@
-this is heading line 1 of website
-this is line 2
+heading 1 
+heading 2 
+heading 3
