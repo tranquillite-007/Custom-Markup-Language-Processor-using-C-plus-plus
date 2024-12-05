@@ -21,6 +21,7 @@ int main(){
 	if(newFile.is_open()){
 		while(getline(myFile, line)){
 			newFile << line << "<br> \n";
+			cout<<"the file is created \n";
 		}
 		
 	}
