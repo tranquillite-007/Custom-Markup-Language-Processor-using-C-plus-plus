@@ -1,12 +1,13 @@
 #include<iostream>
 #include<fstream>
 #include<string>
+#include<sstream>
+#include<algorithm>
 using namespace std;
 
 int main() {
     string line;
     fstream inputFile, outputFile;
-
 
     // Open input.txt file in read mode
     // Check if the file is empty
@@ -37,21 +38,18 @@ int main() {
             inputFile << "\n";
             inputFile << "<!--####``````````````````````````````````````####-->\n<!--####``````````````````````````````````````####-->\n<!--####``````````````````````````````````````####-->\n";
             inputFile << "<!-- Write your statements below, --> \n";
-            inputFile << "<!-- Good Luck (Happy Coading) --> \n";
+            inputFile << "<!-- Good Luck (Happy Coding) --> \n";
             inputFile.close();
         }
     } else {
         inputFile.close(); // Close the file if it is not empty
     }
 
-
     // Open input.txt file for read mode and Open index.html file in write mode 
     // this section works on all conversion process
     inputFile.open("input.txt", ios::in);
     outputFile.open("index.html", ios::out);
     if (outputFile.is_open()) {
-
-
         // First add HTML snippet to our .html file
         outputFile << "<!DOCTYPE html> \n";
         outputFile << "<html lang=\"en\"> \n";
@@ -68,8 +66,56 @@ int main() {
         // this is the main section of the project 
         // all the important code is here
         while (getline(inputFile, line)) {
-            // Test statement to print h1 tags
-            outputFile << "    <h1 style=\"width: max-content; margin: auto; background-color: aqua;\">" << line << "</h1> \n";
+            // Skip comments or lines without useful statements
+            if (line.empty() || line[0] == '<') {
+                continue;
+            }
+
+            // Process only lines that start with '$'
+            if(line[0] == '$'){
+                string content = line;  //start from current line
+                size_t openBrackets = 0;  //store count of open bracket it will help later to extract statements from between ()
+                
+                //code to read lines if statement is multilined
+                while(true){
+                    openBrackets += count(content.begin(), content.end(), '(');
+                    openBrackets -= count(content.begin(), content.end(), ')');
+                    
+                    //if there  are unmatched opening brackets, read the next line
+                    if(openBrackets > 0){
+                        if(!getline(inputFile, line)){
+                            break;  //end of file reached 
+                        }
+                        content += "\n" + line; // append the next line
+                    }else{
+                        break;  //all brackets are matched
+                    }    
+                }
+
+                //process the complete content
+                istringstream iss(content);
+                string firstWord;
+
+                iss >> firstWord;  //get the first word
+
+                //check the first word ($heading) || ($paragraph)
+                if(firstWord == "$heading"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string headingText = content.substr(start + 1, end - start -1);
+                        cout << "Heading: " << headingText << endl;   //prints heading in terminal
+                    }
+                }
+                else if(firstWord == "$paragraph"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string paragraphText = content.substr(start + 1, end - start -1);
+                        cout << "Paragraph: " << paragraphText << endl;   //prints paragraph in terminal
+                    }
+                }
+            }
         }
         
         cout << "congo developer!! the file is created and working properly...  \n";
@@ -78,5 +124,6 @@ int main() {
         outputFile << " </body> \n";
         outputFile << "</html> \n";
     }
+    inputFile.close();
     return 0;
 }

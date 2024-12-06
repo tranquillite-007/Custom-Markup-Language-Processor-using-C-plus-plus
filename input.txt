@@ -18,7 +18,9 @@
 <!--####``````````````````````````````````````####-->
 <!--####``````````````````````````````````````####-->
 <!-- Write your statements below, --> 
-<!-- Good Luck (Happy Coading) --> 
+<!-- Good Luck (Happy Coding) --> 
 
-Heading 1
-Heading 2
+
+
+$heading = (website heading)
+$paragraph = (website paragraph)
