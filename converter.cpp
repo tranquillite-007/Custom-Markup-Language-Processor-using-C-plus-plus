@@ -67,7 +67,7 @@ int main() {
         // all the important code is here
         while (getline(inputFile, line)) {
             // Skip comments or lines without useful statements
-            if (line.empty() || line[0] == '<') {
+            if (line.empty() || line[0] != '$') {
                 continue;
             }
 
@@ -104,6 +104,7 @@ int main() {
                     size_t end = content.find(')');
                     if(start != string::npos && end != string::npos && end > start){
                         string headingText = content.substr(start + 1, end - start -1);
+                        outputFile << "hii aman this is working ";
                         cout << "Heading: " << headingText << endl;   //prints heading in terminal
                     }
                 }

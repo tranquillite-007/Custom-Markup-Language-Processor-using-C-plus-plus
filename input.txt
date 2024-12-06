@@ -19,8 +19,3 @@
 <!--####``````````````````````````````````````####-->
 <!-- Write your statements below, --> 
 <!-- Good Luck (Happy Coding) --> 
-
-
-
-$heading = (website heading)
-$paragraph = (website paragraph)
