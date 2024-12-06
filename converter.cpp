@@ -11,12 +11,11 @@ int main() {
 
     // Open input.txt file in read mode
     // Check if the file is empty
-    // this block of code has no effect on functional feature
     inputFile.open("input.txt", ios::in); 
     if (inputFile.peek() == ifstream::traits_type::eof()) {
         inputFile.close(); // Close the file after checking
 
-        // if file is empty Open input.txt file in append mode and add instruction
+        // if file is empty, open input.txt file in append mode and add instructions
         inputFile.open("input.txt", ios::app);
         if (inputFile.is_open()) {
             // Instructions to write in txt file
@@ -48,7 +47,7 @@ int main() {
     // Open input.txt file for read mode and Open index.html file in write mode 
     // this section works on all conversion process
     inputFile.open("input.txt", ios::in);
-    outputFile.open("index.html", ios::out);
+    outputFile.open("index.html", ios::out); // Open the output file once here
     if (outputFile.is_open()) {
         // First add HTML snippet to our .html file
         outputFile << "<!DOCTYPE html> \n";
@@ -63,8 +62,6 @@ int main() {
         outputFile << " <body> \n";
         
         // While loop to read all lines from inputFile.txt and operate them one by one based on conditions
-        // this is the main section of the project 
-        // all the important code is here
         while (getline(inputFile, line)) {
             // Skip comments or lines without useful statements
             if (line.empty() || line[0] != '$') {
@@ -104,7 +101,7 @@ int main() {
                     size_t end = content.find(')');
                     if(start != string::npos && end != string::npos && end > start){
                         string headingText = content.substr(start + 1, end - start -1);
-                        outputFile << "hii aman this is working ";
+                        outputFile << "<h1>" << headingText << "</h1> \n"; // Write the heading in index.html
                         cout << "Heading: " << headingText << endl;   //prints heading in terminal
                     }
                 }
@@ -113,18 +110,20 @@ int main() {
                     size_t end = content.find(')');
                     if(start != string::npos && end != string::npos && end > start){
                         string paragraphText = content.substr(start + 1, end - start -1);
+                        outputFile << "<p>" << paragraphText << "</p> \n"; // Write the paragraph in index.html
                         cout << "Paragraph: " << paragraphText << endl;   //prints paragraph in terminal
                     }
                 }
             }
         }
         
-        cout << "congo developer!! the file is created and working properly...  \n";
+        cout << "Congo developer!! The file is created and working properly...  \n";
 
         // html snippet lines after html body in html file
         outputFile << " </body> \n";
         outputFile << "</html> \n";
     }
     inputFile.close();
+    outputFile.close(); // Close the output file at the end
     return 0;
 }

@@ -19,3 +19,10 @@
 <!--####``````````````````````````````````````####-->
 <!-- Write your statements below, --> 
 <!-- Good Luck (Happy Coding) --> 
+
+
+
+
+$heading = (Hii, dev! this is heading)
+$paragraph = (and this is out paragraph
+<br> this is paragraph in next line)
