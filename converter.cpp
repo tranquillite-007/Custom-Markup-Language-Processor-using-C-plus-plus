@@ -5,16 +5,17 @@ using namespace std;
 
 int main() {
     string line;
-    fstream inputFile;
+    fstream inputFile, outputFile;
 
-    // Open input.txt file in read mode to check if it is empty
-    inputFile.open("input.txt", ios::in);
-    
+
+    // Open input.txt file in read mode
     // Check if the file is empty
+    // this block of code has no effect on functional feature
+    inputFile.open("input.txt", ios::in); 
     if (inputFile.peek() == ifstream::traits_type::eof()) {
         inputFile.close(); // Close the file after checking
 
-        // Open input.txt file in append mode
+        // if file is empty Open input.txt file in append mode and add instruction
         inputFile.open("input.txt", ios::app);
         if (inputFile.is_open()) {
             // Instructions to write in txt file
@@ -43,16 +44,15 @@ int main() {
         inputFile.close(); // Close the file if it is not empty
     }
 
-    // Code for output file or for converting txt to html     
-    fstream outputFile;
 
-    // Open input.txt file for read mode
+    // Open input.txt file for read mode and Open index.html file in write mode 
+    // this section works on all conversion process
     inputFile.open("input.txt", ios::in);
-    
-    // Open index.html file in write mode
     outputFile.open("index.html", ios::out);
     if (outputFile.is_open()) {
-        // Initial or predefined lines before body tag in html file 
+
+
+        // First add HTML snippet to our .html file
         outputFile << "<!DOCTYPE html> \n";
         outputFile << "<html lang=\"en\"> \n";
         outputFile << " <head> \n";
@@ -64,7 +64,9 @@ int main() {
         outputFile << " </head> \n";
         outputFile << " <body> \n";
         
-        // While loop to read all lines from inputFile.txt
+        // While loop to read all lines from inputFile.txt and operate them one by one based on conditions
+        // this is the main section of the project 
+        // all the important code is here
         while (getline(inputFile, line)) {
             // Test statement to print h1 tags
             outputFile << "    <h1 style=\"width: max-content; margin: auto; background-color: aqua;\">" << line << "</h1> \n";
@@ -72,7 +74,7 @@ int main() {
         
         cout << "congo developer!! the file is created and working properly...  \n";
 
-        // Initial or predefined lines after html body in html file
+        // html snippet lines after html body in html file
         outputFile << " </body> \n";
         outputFile << "</html> \n";
     }
