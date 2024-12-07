@@ -24,5 +24,7 @@
 
 
 $heading = (Hii, dev! this is heading)
-$paragraph = (and this is out paragraph
-<br> this is paragraph in next line)
+$image = ( test url, test alt value)
+$paragraph = (and this is out paragraph<br> this is paragraph in next line)
+$heading = (test heading to check the functionality after multiline statement)
+$image = (www.google.com , this is an image from google)

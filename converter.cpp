@@ -26,8 +26,8 @@ int main() {
             inputFile << "<!-- 1. Write the statement in as shown below: --> \n";
             inputFile << "        <!-- $heading = (Heading For The Section)  --> \n";
             inputFile << "        <!-- $paragraph = (Paragraph For The Section)  --> \n";
-            inputFile << "        <!-- $image = (Image URL to add image)  --> \n";
-            inputFile << "        <!-- $link =(Hypertext)(Link URL to add link)  --> \n";
+            inputFile << "        <!-- $image = (Image URL to add image,alt value)  --> \n";
+            inputFile << "        <!-- $link =(Hypertext,Link URL to add link)  --> \n";
             inputFile << "<!-- 2. After writing all required statement Save the file in project root folder --> \n";
             inputFile << "<!-- 3. Run the project by using the converter.exe file in the project folder --> \n";
             inputFile << "<!-- 4. Your website will be generated in the project folder with name as index.html--> \n";
@@ -37,6 +37,7 @@ int main() {
             inputFile << "\n";
             inputFile << "<!--####``````````````````````````````````````####-->\n<!--####``````````````````````````````````````####-->\n<!--####``````````````````````````````````````####-->\n";
             inputFile << "<!-- Write your statements below, --> \n";
+            inputFile << "<!-- you can remove above lines or comments from txt file, these are non-functional lines -->";
             inputFile << "<!-- Good Luck (Happy Coding) --> \n";
             inputFile.close();
         }
@@ -44,7 +45,7 @@ int main() {
         inputFile.close(); // Close the file if it is not empty
     }
 
-    // Open input.txt file for read mode and Open index.html file in write mode 
+    // Open input.txt file in read mode and Open index.html file in write mode 
     // this section works on all conversion process
     inputFile.open("input.txt", ios::in);
     outputFile.open("index.html", ios::out); // Open the output file once here
@@ -70,7 +71,7 @@ int main() {
 
             // Process only lines that start with '$'
             if(line[0] == '$'){
-                string content = line;  //start from current line
+                string content = line;  //start from current line (assign current line to content)
                 size_t openBrackets = 0;  //store count of open bracket it will help later to extract statements from between ()
                 
                 //code to read lines if statement is multilined
@@ -114,6 +115,17 @@ int main() {
                         cout << "Paragraph: " << paragraphText << endl;   //prints paragraph in terminal
                     }
                 }
+                else if(firstWord == "$image"){
+                	size_t start = content.find('(');
+                	size_t endUrl = content.find(',');
+                	size_t end = content.find(')');
+                	if(start != string::npos && endUrl != string::npos && end != string::npos && end > start){
+                		string imageUrl = content.substr(start + 1, endUrl - start -1);
+                		string alt = content.substr(endUrl + 1, end - endUrl - 1);
+                		outputFile <<  "<img src=\"" <<imageUrl <<"\" alt=\"" <<alt <<"\" /> \n";  //<img src="" alt="">
+                		cout << "Image url:" << imageUrl << "Image Alt:" << alt << endl;  //print image info on terminal
+					}
+				}
             }
         }
         
