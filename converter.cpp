@@ -133,9 +133,13 @@ int main() {
 					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
 						string linkUrl = content.substr(start + 1, delimiter_1 -start -1 );
 						string hypertext = content.substr(delimiter_1 +1 , end - delimiter_1 -1);
-						outputFile << "    <a href=\"" << linkUrl << "\">" << hypertext << "</a>"; //<a href=""></a>
+						outputFile << "    <a href=\"" << linkUrl << "\">" << hypertext << "</a> \n"; //<a href=""></a>
 						cout << "Link:" << linkUrl << "  Hyperlink:" << hypertext << endl; //print link information in terminal
 					}
+				}
+				else if(firstWord == "$navlink"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
 				}
             }
         }
