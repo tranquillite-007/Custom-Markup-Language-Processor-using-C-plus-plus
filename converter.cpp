@@ -102,7 +102,7 @@ int main() {
                     size_t end = content.find(')');
                     if(start != string::npos && end != string::npos && end > start){
                         string headingText = content.substr(start + 1, end - start -1);
-                        outputFile << "<h1>" << headingText << "</h1> \n"; // Write the heading in index.html
+                        outputFile << "    <h1>" << headingText << "</h1> \n"; // Write the heading in index.html
                         cout << "Heading: " << headingText << endl;   //prints heading in terminal
                     }
                 }
@@ -111,7 +111,7 @@ int main() {
                     size_t end = content.find(')');
                     if(start != string::npos && end != string::npos && end > start){
                         string paragraphText = content.substr(start + 1, end - start -1);
-                        outputFile << "<p>" << paragraphText << "</p> \n"; // Write the paragraph in index.html
+                        outputFile << "    <p>" << paragraphText << "</p> \n"; // Write the paragraph in index.html
                         cout << "Paragraph: " << paragraphText << endl;   //prints paragraph in terminal
                     }
                 }
@@ -122,7 +122,7 @@ int main() {
                 	if(start != string::npos && delimiter_1 != string::npos && end != string::npos && end > start){
                 		string imageUrl = content.substr(start + 1, delimiter_1 - start -1);
                 		string alt = content.substr(delimiter_1 + 1, end - delimiter_1 - 1);
-                		outputFile <<  "<img src=\"" <<imageUrl <<"\" alt=\"" <<alt <<"\" /> \n";  //<img src="" alt="">
+                		outputFile <<  "    <img src=\"" <<imageUrl <<"\" alt=\"" <<alt <<"\" /> \n";  //<img src="" alt="">
                 		cout << "Image url:" << imageUrl << "Image Alt:" << alt << endl;  //print image info on terminal
 					}
 				}
@@ -133,7 +133,7 @@ int main() {
 					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
 						string linkUrl = content.substr(start + 1, delimiter_1 -start -1 );
 						string hypertext = content.substr(delimiter_1 +1 , end - delimiter_1 -1);
-						outputFile << "<a href=\"" << linkUrl << "\">" << hypertext << "</a>"; //<a href=""></a>
+						outputFile << "    <a href=\"" << linkUrl << "\">" << hypertext << "</a>"; //<a href=""></a>
 						cout << "Link:" << linkUrl << "  Hyperlink:" << hypertext << endl; //print link information in terminal
 					}
 				}
