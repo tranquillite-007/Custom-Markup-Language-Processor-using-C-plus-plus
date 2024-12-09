@@ -1,6 +1,3 @@
-$heading = (This is my website)
-$paragraph = (This is a project which convert )
-$image = (pic4.png, animation image)
-$link = (www.github.com/tranquillite-007, Github)
 
-$navmenu = (Home+ /url, About+ /url2about)
+$input = (text, John Doe)
+

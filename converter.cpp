@@ -72,8 +72,8 @@ int main() {
 
             // Process only lines that start with '$'
             if(line[0] == '$'){
-                string content = line;  //start from current line (assign current line to content)
-                size_t openBrackets = 0;  //store count of open bracket it will help later to extract statements from between ()
+                string content = line;          //start from current line (assign current line to content)
+                size_t openBrackets = 0;        //store count of open bracket it will help later to extract statements from between ()
                 
                 //code to read lines if statement is multilined
                 while(true){
@@ -171,10 +171,179 @@ int main() {
         				outputFile << "    </ul>\n";
 				    }
 				}
+				else if(firstWord == "$logo"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					size_t delimiter_1 = content.find(',');
+					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
+						string logoImg = content.substr(start +1, delimiter_1 -start -1);
+						string logoTxt = content.substr(delimiter_1 +1 , end -delimiter_1 -1);
+						outputFile <<"    <div>\n";                                    //<div>
+						outputFile <<"        <img src=\"" << logoImg << "\">\n";            //<img src="placeholder.jpg">
+						outputFile <<"        <h3>" << logoTxt <<"</h3>\n";                  //<h3>Logo</h3>
+						outputFile <<"    </div>\n";                                    //</div>
+						cout<<"Logo Image:" << logoImg <<"  Logo text:" <<logoTxt << endl;
+					}
+				}
+				else if(firstWord == "$list"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string listItemStr = content.substr(start +1, end -start -1);
+						
+						stringstream ss(listItemStr);
+						string listItem;
+						vector<string>listItems;
+						
+						while(getline(ss, listItem, ',')){
+							listItems.push_back(listItem);
+						}						
+						outputFile<<"    <ul>\n";
+						for(const string& item : listItems){
+							outputFile<<"        <li>"<<item <<"</li> \n";
+							cout<<"Item:" << item <<endl;
+						}
+						outputFile<<"    </ul> \n";			
+					}
+				}
+				else if(firstWord == "$list1"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string listItemStr = content.substr(start +1, end -start -1);
+						
+						stringstream ss(listItemStr);
+						string listItem;
+						vector<string> listItems;
+						
+						while(getline(ss, listItem, ',')){
+							listItems.push_back(listItem);
+						}
+						outputFile<<"    <ol type=\"1\"> \n";
+						for(const string& item : listItems){
+							outputFile <<"        <li>"<< item <<"</li>\n";
+							cout<< "List1 Item:"<< item <<endl;
+						}
+						outputFile<<"    </ol> \n";
+					}
+				}
+				else if(firstWord == "$listA"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string listItemStr = content.substr(start +1, end -start -1);
+						
+						stringstream ss(listItemStr);
+						string listItem;
+						vector<string> listItems;
+						
+						while(getline(ss, listItem, ',')){
+							listItems.push_back(listItem);
+						}
+						outputFile<<"    <ol type=\"A\"> \n";
+						for(const string& item : listItems){
+							outputFile <<"        <li>"<< item <<"</li>\n";
+							cout<< "List1 Item:"<< item <<endl;
+						}
+						outputFile<<"    </ol> \n";
+					}
+				}
+				else if(firstWord == "$lista"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string listItemStr = content.substr(start +1, end -start -1);
+						
+						stringstream ss(listItemStr);
+						string listItem;
+						vector<string> listItems;
+						
+						while(getline(ss, listItem, ',')){
+							listItems.push_back(listItem);
+						}
+						outputFile<<"    <ol type=\"a\"> \n";
+						for(const string& item : listItems){
+							outputFile <<"        <li>"<< item <<"</li>\n";
+							cout<< "List1 Item:"<< item <<endl;
+						}
+						outputFile<<"    </ol> \n";
+					}
+				}
+				else if(firstWord == "$listI"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string listItemStr = content.substr(start +1, end -start -1);
+						
+						stringstream ss(listItemStr);
+						string listItem;
+						vector<string> listItems;
+						
+						while(getline(ss, listItem, ',')){
+							listItems.push_back(listItem);
+						}
+						outputFile<<"    <ol type=\"I\"> \n";
+						for(const string& item : listItems){
+							outputFile <<"        <li>"<< item <<"</li>\n";
+							cout<< "List1 Item:"<< item <<endl;
+						}
+						outputFile<<"    </ol> \n";
+					}
+				}
+				else if(firstWord == "$listi"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string listItemStr = content.substr(start +1, end -start -1);
+						
+						stringstream ss(listItemStr);
+						string listItem;
+						vector<string> listItems;
+						
+						while(getline(ss, listItem, ',')){
+							listItems.push_back(listItem);
+						}
+						outputFile<<"    <ol type=\"i\"> \n";
+						for(const string& item : listItems){
+							outputFile <<"        <li>"<< item <<"</li>\n";
+							cout<< "List1 Item:"<< item <<endl;
+						}
+						outputFile<<"    </ol> \n";
+					}
+				}
+				else if(firstWord == "$label"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					size_t delimiter_1 = content.find(',');
+					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
+						string labelFor = content.substr(start +1, delimiter_1 -start -1);
+						string labelTxt = content.substr(delimiter_1 +1, end -delimiter_1 -1);
+						outputFile<< "    <label for=\""<< labelFor << "\">" <<labelTxt <<"</label> \n";  //<label for="name">Name</label>
+						cout<< "Label:" << labelTxt << " For:" <<labelFor << endl;
+					}
+				}
+				else if(firstWord == "$input"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					size_t delimiter_1(',');
+					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
+						string inputType = content.substr(start +1, delimiter_1 -start -1); 
+						string placeHolder = content.substr(delimiter_1 +1, end -delimiter_1 -1);
+						
+						outputFile<<"    <input type=\"" << inputType << "\" placeholder = \"" << placeHolder <<"\" required> \n"; //<input type="text" placeholder="Name" required>
+						//cout<<"Input type:" << inputType << endl;
+					}
+				}
             }
         }
         
-        cout << "Congo developer!! The file is created and working properly...  \n";
+        cout << "\n \n \n The file is created and working properly...  \n";
 
         // html snippet lines after html body in html file
         outputFile << " </body> \n";
