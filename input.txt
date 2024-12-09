@@ -1,3 +1,23 @@
+$logo = (pic3.png, LOGO)
+$navlink = (Home+ /url, Documentation+ /documentation, FeedBack+ /feedback, About+ /url2about, Contact+ /contact)
 
+
+$heading = (About this project)
+
+$paragraph = (This project is created by Aman Sinha. The main motive of this project is to simplify the syntex of HTML and convert the language in user friendly English statements. <br> Using the set of statements now anyone can create a website without using all opening and closing tags of html.)
+
+$image = (pic4.png, animation image)
+
+$heading = (Features of using this language)
+
+$list = ( Create Website using simple statements, Statements also support CSS, More fast and easy approach, No code Development, Support Many HTML-5 tags)
+
+$heading = (Rules or statements structure to use this language)
+
+$listi = (<h4>Structure: </h4> Start the statements with "$" sign <br> Then write the tag name followed by the content <br> of the tag in parentheses ,<h4>Documentation:</h4><a href="#">Follow This link for all syntax</a>)
+
+$heading = (Write your feedback)
+
+$label = (name, Name)
 $input = (text, John Doe)
 

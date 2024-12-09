@@ -331,13 +331,13 @@ int main() {
 				else if(firstWord == "$input"){
 					size_t start = content.find('(');
 					size_t end = content.find(')');
-					size_t delimiter_1(',');
+					size_t delimiter_1 = content.find(',');
 					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
 						string inputType = content.substr(start +1, delimiter_1 -start -1); 
 						string placeHolder = content.substr(delimiter_1 +1, end -delimiter_1 -1);
 						
 						outputFile<<"    <input type=\"" << inputType << "\" placeholder = \"" << placeHolder <<"\" required> \n"; //<input type="text" placeholder="Name" required>
-						//cout<<"Input type:" << inputType << endl;
+						cout<<"Input type:" << inputType << endl;
 					}
 				}
             }
