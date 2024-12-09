@@ -3,6 +3,7 @@
 #include<string>
 #include<sstream>
 #include<algorithm>
+#include<vector>
 using namespace std;
 
 int main() {
@@ -140,6 +141,35 @@ int main() {
 				else if(firstWord == "$navlink"){
 					size_t start = content.find('(');
 					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string menuItemsStr = content.substr(start + 1, end -start -1);
+						
+						// split the menu items (links and text) by ","
+						stringstream ss(menuItemsStr);
+						string item;
+						vector<pair<string, string>> menuItems; // vector to store menu text and links 
+						
+						while(getline(ss, item, ',')){
+							size_t plusPos = item.find('+');
+							if(plusPos != string::npos){
+								string menuText = item.substr(0, plusPos);
+								string menuUrl = item.substr(plusPos + 1);
+								
+								
+								menuItems.push_back(make_pair(menuText, menuUrl));
+							}
+						}
+						
+						
+						//generate html for the navigation menu
+						outputFile << "    <ul>\n";
+                		for (const auto& pair : menuItems) {
+        				    outputFile << "        <li><a href=\"" << pair.second << "\">" << pair.first << "</a></li>\n";
+        				    cout << "Nav Link: " << pair.first << " -> URL: " << pair.second << endl;
+        				}
+        				outputFile << "    </ul>\n";
+				    }
 				}
             }
         }

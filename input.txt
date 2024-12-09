@@ -3,4 +3,4 @@ $paragraph = (This is a project which convert )
 $image = (pic4.png, animation image)
 $link = (www.github.com/tranquillite-007, Github)
 
-$navmenu = (Home, About, Services, Certificates, menu5, menu6, etc...)
+$navmenu = (Home+ /url, About+ /url2about)
