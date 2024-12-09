@@ -21,3 +21,7 @@ $heading = (Write your feedback)
 $label = (name, Name)
 $input = (text, John Doe)
 
+$label = (email, Email)
+$input = (email, xyz@zmail.com)
+
+$textarea = (message , message)
