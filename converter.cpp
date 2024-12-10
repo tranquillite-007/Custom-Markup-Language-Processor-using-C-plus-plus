@@ -390,7 +390,7 @@ int main() {
         				    outputFile << "        <option value =\"" << pair.first << "\">" << pair.second << "</option>\n";
         				    cout << "option Value: " << pair.first << " option: " << pair.second << endl;
         				}
-        				outputFile << "    </select>\n";
+        				outputFile << "    </select><br>\n";
 					}
 				}
 				else if(firstWord == "$video"){
@@ -399,11 +399,21 @@ int main() {
 					if(start != string::npos && end != string::npos && end > start){
 						string videoLink = content.substr(start +1, end -start -1);
 						
-						outputFile<<"    <video src=\""<< videoLink << "\"></video> \n";
+						outputFile<<"    <video src=\""<< videoLink << "\" controls></video> <br>\n";
 						cout<<"Video Address:" << videoLink<< endl;
 					}
 				}
-            }
+				else if(firstWord == "$audio"){
+					size_t start = content.find('(');
+					size_t end  = content.find(')');	
+					if(start != string::npos && end != string::npos && end > start){
+						string audioLink = content.substr(start +1, end -start -1);
+						
+						outputFile<<"    <audio src=\""<< audioLink << "\" controls></audio> <br>\n";
+						cout<<"Audio Address:" << audioLink<< endl;
+					}
+				}
+			}
         }
         
         cout << "\n \n \n The file is created and working properly...  \n";
