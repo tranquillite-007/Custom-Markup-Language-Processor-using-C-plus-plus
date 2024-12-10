@@ -348,8 +348,18 @@ int main() {
 						string textAreaPlaceholder = content.substr(delimiter_1+1, end -delimiter_1 -1);
 						outputFile<< "    <textarea name=\"" << textAreaName << " \"placeholder=\"" << textAreaPlaceholder << "\"></textarea>\n";   //<textarea name="Messege" placeholder="Messege"></textarea>
 						cout<<"textarea for:" << textAreaName << " textarea Placeholder:" << textAreaPlaceholder << endl;
+					}	
+				}
+				else if(firstWord == "$button"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					size_t delimiter_1 = content.find(',');
+					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
+						string btnTxt = content.substr(start +1, delimiter_1 -start -1);
+						string btnType = content.substr(delimiter_1+1, end -delimiter_1 -1);
+						outputFile << "    <button type=\"" << btnType <<"\">" << btnTxt <<"</button> \n"; //<button type="submit">Click me</button>
+						cout << "Button: "<<btnTxt <<"  Type: " << btnType<< endl;
 					}
-					
 				}
             }
         }
