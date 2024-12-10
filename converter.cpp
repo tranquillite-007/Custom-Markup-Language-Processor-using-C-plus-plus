@@ -393,6 +393,16 @@ int main() {
         				outputFile << "    </select>\n";
 					}
 				}
+				else if(firstWord == "$video"){
+					size_t start = content.find('(');
+					size_t end  = content.find(')');	
+					if(start != string::npos && end != string::npos && end > start){
+						string videoLink = content.substr(start +1, end -start -1);
+						
+						outputFile<<"    <video src=\""<< videoLink << "\"></video> \n";
+						cout<<"Video Address:" << videoLink<< endl;
+					}
+				}
             }
         }
         
