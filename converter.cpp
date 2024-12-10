@@ -346,7 +346,7 @@ int main() {
 					if(start != string::npos && end != string::npos && end > start){
 						string textAreaName = content.substr(start +1, delimiter_1 -start -1);
 						string textAreaPlaceholder = content.substr(delimiter_1+1, end -delimiter_1 -1);
-						outputFile<< "    <textarea name=\"" << textAreaName << " \"placeholder=\"" << textAreaPlaceholder << "\"></textarea>\n";   //<textarea name="Messege" placeholder="Messege"></textarea>
+						outputFile<< "    <textarea name=\"" << textAreaName << " \"placeholder=\"" << textAreaPlaceholder << "\"></textarea><br>\n";   //<textarea name="Messege" placeholder="Messege"></textarea>
 						cout<<"textarea for:" << textAreaName << " textarea Placeholder:" << textAreaPlaceholder << endl;
 					}	
 				}
@@ -357,8 +357,40 @@ int main() {
 					if(start != string::npos && end != string::npos && delimiter_1 != string::npos && end > start){
 						string btnTxt = content.substr(start +1, delimiter_1 -start -1);
 						string btnType = content.substr(delimiter_1+1, end -delimiter_1 -1);
-						outputFile << "    <button type=\"" << btnType <<"\">" << btnTxt <<"</button> \n"; //<button type="submit">Click me</button>
+						outputFile << "    <button type=\"" << btnType <<"\">" << btnTxt <<"</button><br> \n"; //<button type="submit">Click me</button>
 						cout << "Button: "<<btnTxt <<"  Type: " << btnType<< endl;
+					}
+				}
+				else if(firstWord == "$dropdown"){
+					size_t start = content.find('(');
+					size_t end = content.find(')');
+					
+					if(start != string::npos && end != string::npos && end > start){
+						string optionsStr = content.substr(start + 1, end -start -1);
+						
+						// split the menu items (links and text) by ","
+						stringstream ss(optionsStr);
+						string item;
+						vector<pair<string, string>> optionItems; // vector to store menu text and links 
+						
+						while(getline(ss, item, ',')){
+							size_t plusPos = item.find('+');
+							if(plusPos != string::npos){
+								string optionValue = item.substr(0, plusPos);
+								string option = item.substr(plusPos + 1);
+								
+								
+								optionItems.push_back(make_pair(optionValue, option));
+							}
+						}
+						
+						//generate html for the dropdown menu
+						outputFile << "    <select>\n";
+                		for (const auto& pair : optionItems) {
+        				    outputFile << "        <option value =\"" << pair.first << "\">" << pair.second << "</option>\n";
+        				    cout << "option Value: " << pair.first << " option: " << pair.second << endl;
+        				}
+        				outputFile << "    </select>\n";
 					}
 				}
             }
