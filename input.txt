@@ -1,10 +1,10 @@
 $logo = (pic3.png, LOGO)
-$navlink = (Home+ /url, Documentation+ /documentation, FeedBack+ /feedback, About+ /url2about, Contact+ /contact)
+$navlink = (Home+ /home, Documentation+ /documentation, Feedback+ /feedback, About+ /about, Contact+ /contact)
 
 
 $heading = (About this project)
 
-$paragraph = (This project is created by Aman Sinha. The main motive of this project is to simplify the syntex of HTML and convert the language in user friendly English statements. <br> Using the set of statements now anyone can create a website without using all opening and closing tags of html.)
+$paragraph = (This project is created by Aman Sinha. The main motive of this project is to simplify the syntax of HTML and convert the language in user friendly English statements. <br> Using the set of statements now anyone can create a website without using all opening and closing tags of html.)
 
 $image = (pic4.png, animation image)
 

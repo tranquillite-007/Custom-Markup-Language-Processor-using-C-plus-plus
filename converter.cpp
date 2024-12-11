@@ -73,38 +73,83 @@ int main() {
             // Process only lines that start with '$'
             if(line[0] == '$'){
                 string content = line;          //start from current line (assign current line to content)
-                size_t openBrackets = 0;        //store count of open bracket it will help later to extract statements from between ()
+//              size_t openBrackets = 0;        //store count of open bracket it will help later to extract statements from between () when the statement is in myltiline 
                 
                 //code to read lines if statement is multilined
-                while(true){
-                    openBrackets += count(content.begin(), content.end(), '(');
-                    openBrackets -= count(content.begin(), content.end(), ')');
-                    
-                    //if there  are unmatched opening brackets, read the next line
-                    if(openBrackets > 0){
-                        if(!getline(inputFile, line)){
-                            break;  //end of file reached 
-                        }
-                        content += "\n" + line; // append the next line
-                    }else{
-                        break;  //all brackets are matched
-                    }    
-                }
+//                while(true){
+//                    openBrackets += count(content.begin(), content.end(), '(');
+//                    openBrackets -= count(content.begin(), content.end(), ')');
+//                    
+//                    //if there  are unmatched opening brackets, read the next line
+//                    if(openBrackets > 0){
+//                        if(!getline(inputFile, line)){
+//                            break;  //end of file reached 
+//                        }
+//                        content += "\n" + line; // append the next line
+//                    }else{
+//                        break;  //all brackets are matched
+//                    }    
+//                }
 
                 //process the complete content
                 istringstream iss(content);
                 string firstWord;
 
-                iss >> firstWord;  //get the first word
+                iss >> firstWord;  //get the first word of line
 
                 //check the first word ($heading) || ($paragraph)
-                if(firstWord == "$heading"){
+                if(firstWord == "$heading1"){
                     size_t start = content.find('(');
                     size_t end = content.find(')');
                     if(start != string::npos && end != string::npos && end > start){
                         string headingText = content.substr(start + 1, end - start -1);
-                        outputFile << "    <h1>" << headingText << "</h1> \n"; // Write the heading in index.html
+                        outputFile << "    <h1>" << headingText << "</h1> \n"; // Write the heading h1 in index.html
                         cout << "Heading: " << headingText << endl;   //prints heading in terminal
+                    }
+                }
+                else if(firstWord == "$heading2"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string headingText = content.substr(start + 1, end - start -1);
+                        outputFile << "    <h2>" << headingText << "</h2> \n"; // Write the heading h2 in index.html
+                        cout << "Heading2: " << headingText << endl;   //prints heading in terminal
+                    }
+                }
+                else if(firstWord == "$heading3"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string headingText = content.substr(start + 1, end - start -1);
+                        outputFile << "    <h3>" << headingText << "</h3> \n"; // Write the heading h3 in index.html
+                        cout << "Heading3: " << headingText << endl;   //prints heading in terminal
+                    }
+                }
+                else if(firstWord == "$heading4"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string headingText = content.substr(start + 1, end - start -1);
+                        outputFile << "    <h4>" << headingText << "</h4> \n"; // Write the heading h4 in index.html
+                        cout << "Heading4: " << headingText << endl;   //prints heading in terminal
+                    }
+                }
+                else if(firstWord == "$heading5"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string headingText = content.substr(start + 1, end - start -1);
+                        outputFile << "    <h5>" << headingText << "</h5> \n"; // Write the heading h5 in index.html
+                        cout << "Heading5: " << headingText << endl;   //prints heading in terminal
+                    }
+                }
+                else if(firstWord == "$heading6"){
+                    size_t start = content.find('(');
+                    size_t end = content.find(')');
+                    if(start != string::npos && end != string::npos && end > start){
+                        string headingText = content.substr(start + 1, end - start -1);
+                        outputFile << "    <h6>" << headingText << "</h6> \n"; // Write the heading h6 in index.html
+                        cout << "Heading6: " << headingText << endl;   //prints heading in terminal
                     }
                 }
                 else if(firstWord == "$paragraph"){
@@ -163,7 +208,7 @@ int main() {
 						
 						
 						//generate html for the navigation menu
-						outputFile << "    <ul>\n";
+						outputFile << "    <ul style=\"display: flex; gap: 10px; list-style: none;\" >\n";
                 		for (const auto& pair : menuItems) {
         				    outputFile << "        <li><a href=\"" << pair.second << "\">" << pair.first << "</a></li>\n";
         				    cout << "Nav Link: " << pair.first << " -> URL: " << pair.second << endl;
@@ -368,10 +413,9 @@ int main() {
 					if(start != string::npos && end != string::npos && end > start){
 						string optionsStr = content.substr(start + 1, end -start -1);
 						
-						// split the menu items (links and text) by ","
 						stringstream ss(optionsStr);
 						string item;
-						vector<pair<string, string>> optionItems; // vector to store menu text and links 
+						vector<pair<string, string>> optionItems; 
 						
 						while(getline(ss, item, ',')){
 							size_t plusPos = item.find('+');
