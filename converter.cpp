@@ -60,6 +60,7 @@ int main() {
         
         // Later I'll add title program to add title in website 
         outputFile << "    <title></title> \n";
+        outputFile << "    <link href=\"https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css\" rel=\"stylesheet\"> \n";
         outputFile << " </head> \n";
         outputFile << " <body> \n";
         
@@ -101,10 +102,14 @@ int main() {
                 if(firstWord == "$heading1"){
                     size_t start = content.find('(');
                     size_t end = content.find(')');
-                    if(start != string::npos && end != string::npos && end > start){
+                    size_t cStart = content.find('[');
+                    size_t cEnd = content.find(']');
+                    if(start != string::npos && end != string::npos && end > start && cStart != string::npos && cEnd != string::npos && cEnd > cStart){
                         string headingText = content.substr(start + 1, end - start -1);
-                        outputFile << "    <h1>" << headingText << "</h1> \n"; // Write the heading h1 in index.html
+                        string className = content.substr(cStart +1, cEnd -cStart -1);
+                        outputFile << "    <h1 class=\""<< className << "\">" << headingText << "</h1> \n"; // Write the heading h1 in index.html
                         cout << "Heading: " << headingText << endl;   //prints heading in terminal
+                        cout << "class: "<< className << endl;
                     }
                 }
                 else if(firstWord == "$heading2"){
