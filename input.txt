@@ -1,7 +1,36 @@
-$heading1 = (Heading with class)[text-3xl font-bold text-center text-red-500]
+$logo = (yt.jpg, LOGO)[logo]
+$navlink = (Home+ /home, Documentation+ /documentation, Feedback+ /feedback, About+ /about, Contact+ /contact)[navlink]
 
-$heading1 = (Heading without class name)
 
-$heading1 = (Heading with simple class name)[main_heading]
+$heading1 = (About this project)[text-3xl font-bold text-center text-red-500]
 
-$heading1 = (Heading with blank class name)[]
+$paragraph = (This project is created by Aman Sinha. The main motive of this project is to simplify the syntax of HTML and convert the language in user friendly English statements. <br> Using the set of statements now anyone can create a website without using all opening and closing tags of html.)[font-italic text-left text-green-300]
+
+$image = (pic4.png, animation image)[h-20]
+
+$heading1 = (Features of using this language)[text-3xl font-bold text-center text-red-500]
+
+$list = ( Create Website using simple statements, Statements also support CSS, More fast and easy approach, No code Development, Support Many HTML-5 tags)
+$heading1 = (Rules or statements structure to use this language)[text-3xl font-bold text-center text-red-500]
+
+$listi = (<h4>Structure: </h4> Start the statements with "$" sign <br> Then write the tag name followed by the content <br> of the tag in parentheses ,<h4>Documentation:</h4><a href="#">Follow This link for all syntax</a>)
+
+$heading1 = (Write your feedback)[text-3xl font-bold text-center text-red-500]
+
+$label = (name, Name)[label]
+
+$input = (text, John Doe)[input]
+
+$label = (email, Email)[label]
+$input = (email, xyz@zmail.com)[input]
+
+$textarea = (message , message)[textarea]
+$button = (click me ,submit)[btn]
+
+$dropdown = (red +Red, green +Green, blue +Blue)[dropdown]
+
+$video = (http://example.com/video.mp4)[video]
+$audio = (this is audio address)[audio]
+
+$heading3 = (Copywrite © 2024 - Aman Sinha <a href="#">www.github.com/tranquillite-007</a>)[text-3l font-bold text-center text-grey-500]
+
