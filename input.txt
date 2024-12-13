@@ -1,4 +1,4 @@
-$logo = (yt.jpg, LOGO)[logo]
+$logo = (yt.jpg, easyMarkup)[logo]
 $navlink = (Home+ /home, Documentation+ /documentation, Feedback+ /feedback, About+ /about, Contact+ /contact)[navlink]
 
 
@@ -17,12 +17,17 @@ $listi = (<h4>Structure: </h4> Start the statements with "$" sign <br> Then writ
 
 $heading1 = (Write your feedback)[text-3xl font-bold text-center text-red-500]
 
+$div_start
 $label = (name, Name)[label]
-
 $input = (text, John Doe)[input]
+$div_end
 
+
+$div_start [input_form]
 $label = (email, Email)[label]
 $input = (email, xyz@zmail.com)[input]
+$div_end
+
 
 $textarea = (message , message)[textarea]
 $button = (click me ,submit)[btn]

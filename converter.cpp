@@ -636,6 +636,24 @@ int main() {
 						}
 					}
 				}
+				else if(firstWord == "$div_start"){
+					size_t cStart = content.find('[');
+					size_t cEnd = content.find(']');
+					string className;
+					if(cStart != string::npos && cEnd != string::npos && cEnd > cStart){
+						className = content.substr(cStart +1, cEnd -cStart -1);
+						outputFile <<"<div class=\"" << className << "\"> \n";
+						cout<<"div start \n";
+						cout<< "Div class:" << className << endl;
+					}else{
+						outputFile <<"<div>\n";
+						cout<<"div start no class\n";
+					}
+				}
+				else if(firstWord == "$div_end"){
+					outputFile << "</div>\n";
+					cout<<"div close\n";
+				}
 			}
         }
         
