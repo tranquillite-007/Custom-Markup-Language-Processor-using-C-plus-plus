@@ -30,7 +30,7 @@ $div_end
 
 
 $textarea = (message , message)[textarea]
-$button = (click me ,submit)[btn]
+$button = (click me ,submit)[button]
 
 $dropdown = (red +Red, green +Green, blue +Blue)[dropdown]
 
