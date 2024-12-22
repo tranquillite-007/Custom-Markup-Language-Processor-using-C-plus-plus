@@ -69,6 +69,75 @@ int main(){
 			}else{
 				string content = line;
 				
+				istringstream iss(content);
+				string firstWord;
+				
+				iss >> firstWord; 
+				
+				//check the first word and operate based on there syntax structure
+				if (firstWord == "$word" || firstWord == "$div") {
+                    
+					size_t start = string::npos;
+					size_t end = string::npos;
+					size_t cStart = string::npos;
+					size_t cEnd = string::npos;
+					
+					int openParentheses = 0;
+					int openBrackets = 0;	
+                    	
+                    for (size_t i = 0; i < content.length(); ++i) {
+                        if (content[i] == '~') {
+                            // Skip the next character
+                            ++i;
+                            continue;
+                        }
+                        if (content[i] == '(') {
+                            if (openParentheses == 0) {
+                                start = i; 
+                            }
+                            openParentheses++;
+                        } else if (content[i] == ')') {
+                            openParentheses--;
+                            if (openParentheses == 0 && start != string::npos) {
+                                end = i; 
+                            }
+                        } else if (content[i] == '[') {
+                            if (openBrackets == 0) {
+                                cStart = i;
+                            }
+                            openBrackets++;
+                        } else if (content[i] == ']') {
+                            openBrackets--;
+                            if (openBrackets == 0 && cStart != string::npos) {
+                                cEnd = i; 
+                            }
+                        }
+                    }
+					
+					if (start != string::npos && end != string::npos && end > start){
+						string className;
+						
+						// Check if the class is there or not, if class info is available
+                        if (cStart != string::npos && cEnd != string::npos && cEnd > cStart) {
+                            className = content.substr(cStart + 1, cEnd - cStart - 1);
+                        } else {
+                            className = ""; // Default class name if not present
+                        }
+                        
+                         
+                        if (firstWord == "$word") {
+                            string text = content.substr(start + 1, end - start - 1);
+                            if (!className.empty()) {
+                                outputFile << "    <h1 class=\"" << className << "\">" << text << "</h1> \n";
+                                cout<< "working \n";
+                            } else {
+                                outputFile << "    <h1>" << text << "</h1> \n"; // No class attribute
+                                cout<< "no class working \n";
+                            }
+                        }
+					}	
+				}
+				
 			}
 		}
 		// html snippet lines after html body in html file

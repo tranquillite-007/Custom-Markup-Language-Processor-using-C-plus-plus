@@ -1,22 +1,7 @@
-<!-- Hello Developer, this project is created by Aman Sinha you can contact me on sinhaaman655@hotmail.com | follow and star the repo on www.github.com/tranquillite-007--> 
-<!-- About this project : This is a C++ project to convert or we can say that a project to create HTML, CSS website by just writing some lines in normal English--> 
-<!-- Direction to use this project: --> 
-<!-- Write the statements for your website based on below rules --> 
-<!-- 1. Write the statement in as shown below: --> 
-        <!-- $heading = (Heading For The Section)  --> 
-        <!-- $paragraph = (Paragraph For The Section)  --> 
-        <!-- $image = (Image URL to add image,alt value)  --> 
-        <!-- $link =(Hypertext,Link URL to add link)  --> 
-<!-- 2. After writing all required statement Save the file in project root folder --> 
-<!-- 3. Run the project by using the converter.exe file in the project folder --> 
-<!-- 4. Your website will be generated in the project folder with name as index.html--> 
-<!-- For more syntax statement Rule read the readme.md file of below mentioned github repo --> 
-<!-- https://github.com/tranquillite-007/txt-to-html-convertor-in-cpp/edit/main/README.md --> 
-<!-- Don't forget to star the repo for future reference.--> 
+$word = (this is the word using ~( and ~) in the statement) [also for class ~[ and ~] in]
 
-<!--####``````````````````````````````````````####-->
-<!--####``````````````````````````````````````####-->
-<!--####``````````````````````````````````````####-->
-<!-- Write your statements below, --> 
-<!-- you can remove above lines or comments from txt file, these are non-functional lines --><!-- Good Luck (Happy Coding) --> 
+$word = (this is the word using ~( and ~) in the statement) []
 
+$word = (this is the word using ~( and ~) in the statement) [~[ and ~] working]
+
+$word = (this is the word using ~( and ~) in the statement)
