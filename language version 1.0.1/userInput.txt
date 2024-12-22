@@ -1,7 +1,33 @@
-$word = (this is the word using ~( and ~) in the statement) [also for class ~[ and ~] in]
 
-$word = (this is the word using ~( and ~) in the statement) []
+$header_start = [text-center]
 
-$word = (this is the word using ~( and ~) in the statement) [~[ and ~] working]
+$nav_start = [nav-bar]
+$heading1 = (heading1)[text-larger text-green-300]
+$paragraph = (header content here)[p1 class]
+$nav_end
 
-$word = (this is the word using ~( and ~) in the statement)
+$header_end
+
+$section_start = [text-center text green-300]
+
+$div_start = [div1class]
+$heading2 = (heading2)[h2class]
+$heading3 = (heading3)[h3class]
+$div_end
+
+$heading4 = (heading4)[h4class]
+
+$aside_start
+$heading5 = (heading5)[h5class]
+$aside_end
+
+$main_start = [mainclass]
+$heading6 = (heading6)[h6class]
+$paragraph = (section content here paragraph)[p2 class]
+$main_end
+
+$section_end
+
+$footer_start = [text-center]
+$paragraph = (footer content here)[p3 class]
+$footer_end
