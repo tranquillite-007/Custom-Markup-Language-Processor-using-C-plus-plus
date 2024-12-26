@@ -1,7 +1,7 @@
 
 $header_start = [text-center]
 
-$nav_start = [nav-bar]
+$nav_start = [nav-bar text-red-200 m-10]
 $heading1 = (heading1)[text-larger text-green-300]
 $paragraph = (header content here)[p1 class]
 $nav_end
@@ -16,6 +16,11 @@ $heading3 = (heading3)[h3class]
 $div_end
 
 $heading4 = (heading4)[h4class]
+
+$audio = (audio)[class audio]
+$link = (www.google.com, google)
+$canvas = (300)
+$iframe= (www.github.com/tranquillite-007)[embed-class]
 
 $aside_start
 $heading5 = (heading5)[h5class]
