@@ -1,6 +1,5 @@
 # txt-to-html-convertor-in-cpp
 
-
 ### **Documentation**
 
 ---
@@ -184,17 +183,48 @@ Generates an `<svg>` tag with a `viewBox` attribute.
 
 ---
 
-##### **15. Map and Area Tags: `$map` and `$area`**  
-Generates `<map>` and `<area>` tags.  
+##### **15. Input Tag: `$input`**  
+Generates an `<input>` tag with `type` and `placeholder` attributes.  
 
-**Input (Map):**  
-`$map(mapName)`  
-**Output:**  
-- With `className`: `<map class="className" name="mapName"></map>`  
-- Without `className`: `<map name="mapName"></map>`  
+**Input:**  
+`$input(text,Enter your name)`  
 
-**Input (Area):**  
-`$area(100,200,link.com)`  
 **Output:**  
-- With `className`: `<area class="className" coords="100,200" href="link.com" alt="Area" shape="rect">`  
-- Without `className`: `<area coords="100,200" href="link.com" alt="Area" shape="rect">`  
+- With `className`: `<input class="className" type="text" placeholder="Enter your name">`  
+- Without `className`: `<input type="text" placeholder="Enter your name">`  
+
+---
+
+##### **16. Textarea Tag: `$textarea`**  
+Generates a `<textarea>` tag with a `placeholder` attribute.  
+
+**Input:**  
+`$textarea(Enter your message)`  
+
+**Output:**  
+- With `className`: `<textarea class="className" placeholder="Enter your message"></textarea>`  
+- Without `className`: `<textarea placeholder="Enter your message"></textarea>`  
+
+---
+
+##### **17. Label Tag: `$label`**  
+Generates a `<label>` tag for form elements.  
+
+**Input:**  
+`$label(forInput,Name)`  
+
+**Output:**  
+- With `className`: `<label class="className" for="forInput">Name</label>`  
+- Without `className`: `<label for="forInput">Name</label>`  
+
+---
+
+##### **18. Button Tag: `$button`**  
+Generates a `<button>` tag with text content.  
+
+**Input:**  
+`$button(Submit)`  
+
+**Output:**  
+- With `className`: `<button class="className">Submit</button>`  
+- Without `className`: `<button>Submit</button>`  

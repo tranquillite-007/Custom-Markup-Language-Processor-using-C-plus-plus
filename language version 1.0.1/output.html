@@ -6,31 +6,87 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> 
 </head> 
 <body> 
-<header class="text-center">
-<nav class="nav-bar text-red-200 m-10">
-    <h1 class="text-larger text-green-300">heading1</h1> 
-    <p class="p1 class">header content here</p> 
+<header class="flex flex-col lg:flex-row items-center justify-between p-6 bg-gray-800 text-white shadow-lg">
+    <div class="flex items-center space-x-3">
+    <img class="h-12 w-12 rounded-full" src="https://via.placeholder.com/50" alt="Logo"> 
+    <p class="text-2xl font-bold">MyWebsite</p> 
+    </div>
+<nav class="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-8 text-lg mt-4 lg:mt-0 items-center">
+    <a class="hover:text-green-300" href="#hero">Home</a> 
+    <a class="hover:text-green-300" href="#services">Services</a> 
+    <a class="hover:text-green-300" href="#feedback">Feedback</a> 
+    <a class="hover:text-green-300" href="#about">About</a> 
 </nav>
 </header>
-<section class="text-center text green-300">
-    <div class="div1class">
-    <h2 class="h2class">heading2</h2> 
-    <h3 class="h3class">heading3</h3> 
+<section class="relative h-[70vh">
+    <div class="absolute inset-0 bg-black opacity-50">
     </div>
-    <h4 class="h4class">heading4</h4> 
-    <audio class="class audio" controls><source src="audio" type="audio/mpeg"></audio>
-    <a href="www.google.com"> google</a> 
-    <canvas width="300"></canvas>
-<aside>
-    <h5 class="h5class">heading5</h5> 
-</aside>
-<main class="mainclass">
-    <h6 class="h6class">heading6</h6> 
-    <p class="p2 class">section content here paragraph</p> 
-</main>
+    <div class="relative z-10 text-center bg-green-300">
+    <h1 class="text-4xl font-bold mb-4 text-white">Welcome to Our Creative World</h1> 
+    <p class="text-xl text-white">We bring your ideas to life with innovative solutions and creative design.</p> 
+    </div>
 </section>
-<footer class="text-center">
-    <p class="p3 class">footer content here</p> 
+<section class="py-16 px-6 bg-green-100 text-center">
+    <h2 class="text-3xl font-bold mb-8 text-gray-800">Our Services</h2> 
+    <div class="flex flex-wrap justify-center gap-12">
+    <div class="flex flex-col items-center bg-white shadow-lg rounded-lg p-6 w-72">
+    <img class="w-full h-48 object-cover mb-4 rounded-lg shadow-md" src="https://via.placeholder.com/300x200" alt="Service 1"> 
+    <h3 class="text-xl font-semibold mb-2 text-green-500">Web Design</h3> 
+    <p class="text-gray-700 text-center">Custom website design tailored to your brand.</p> 
+    </div>
+    <div class="flex flex-col items-center bg-white shadow-lg rounded-lg p-6 w-72">
+    <img class="w-full h-48 object-cover mb-4 rounded-lg shadow-md" src="https://via.placeholder.com/300x200" alt="Service 2"> 
+    <h3 class="text-xl font-semibold mb-2 text-green-500">Branding</h3> 
+    <p class="text-gray-700 text-center">Build a unique brand identity with our creative designs.</p> 
+    </div>
+    <div class="flex flex-col items-center bg-white shadow-lg rounded-lg p-6 w-72">
+    <img class="w-full h-48 object-cover mb-4 rounded-lg shadow-md" src="https://via.placeholder.com/300x200" alt="Service 3"> 
+    <h3 class="text-xl font-semibold mb-2 text-green-500">SEO Optimization</h3> 
+    <p class="text-gray-700 text-center">Improve your website's visibility and ranking on search engines.</p> 
+    </div>
+    <div class="flex flex-col items-center bg-white shadow-lg rounded-lg p-6 w-72">
+    <img class="w-full h-48 object-cover mb-4 rounded-lg shadow-md" src="https://via.placeholder.com/300x200" alt="Service 4"> 
+    <h3 class="text-xl font-semibold mb-2 text-green-500">Marketing</h3> 
+    <p class="text-gray-700 text-center">Grow your business with our marketing strategies.</p> 
+    </div>
+    </div>
+</section>
+<section class="py-16 px-6 bg-red-100">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">We'd Love to Hear From You</h2> 
+    <div class="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+<form>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+    <div>
+    <label class="block text-lg font-medium mb-2 text-gray-700" for="name"> Name</label> 
+    <input class="w-full p-3 border border-gray-300 rounded-lg" type="text" placeholder="Enter your name"> 
+    </div>
+    <div>
+    <label class="block text-lg font-medium mb-2 text-gray-700" for="email"> Email</label> 
+    <input class="w-full p-3 border border-gray-300 rounded-lg" type="email" placeholder="Enter your email"> 
+    </div>
+    </div>
+    <div class="mb-6">
+    <label class="block text-lg font-medium mb-2 text-gray-700" for="message">Message</label> 
+    <textarea class="w-full p-3 border border-gray-300 rounded-lg rows=5" name="Enter your message" rows=" 4" cols=" 4"></textarea> 
+    </div>
+    <button class="w-full bg-red-500 text-white py-3 rounded-lg text-lg hover:bg-red-600" type="submit">Submit</button> 
+</form>
+    </div>
+</section>
+<section class="py-16 px-6 bg-gray-900 text-white">
+    <div class="flex flex-col md:flex-row items-center w-full">
+    <div class="md:w-1/2 text-center md:text-left">
+    <h2 class="text-3xl font-bold mb-4 text-green-500">About Us</h2> 
+    <p class="text-lg text-gray-300 mb-4">We are a passionate team of designers and marketers committed to creating beautiful, functional, and user-friendly websites for businesses of all sizes.</p> 
+    <p class="text-lg text-gray-300">Our mission is to help you stand out in the digital world with unique designs and effective marketing strategies.</p> 
+    </div>
+    <div class="md:w-1/2 mt-8 md:mt-0 w-full">
+    <img class="rounded-lg shadow-lg w-full" src="https://via.placeholder.com/1600x900" alt="About Image"> 
+    </div>
+    </div>
+</section>
+<footer class="py-8 bg-gray-800 text-center text-gray-200">
+    <p>&copy; 2024 MyWebsite. All rights reserved.</p> 
 </footer>
 </body> 
 </html> 

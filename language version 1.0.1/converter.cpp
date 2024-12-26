@@ -1,4 +1,4 @@
-				#include <iostream>
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <sstream>
@@ -83,7 +83,8 @@ int main() {
         while (getline(inputFile, line)) {
             if (line.empty() || line[0] != '$') {
                 continue;
-            } else {
+            } 
+			else {
                 string content = line;
 
                 istringstream iss(content);
@@ -96,7 +97,7 @@ int main() {
         		string className;
         		if (cStart != string::npos && cEnd != string::npos && cEnd > cStart) {
         		    className = processTilde(content.substr(cStart + 1, cEnd - cStart - 1));
-        		}   
+        	    }   
 				
 				//document structural tags first 
 				//paragraph
@@ -232,6 +233,18 @@ int main() {
         		}
 				else if (tagName == "$main_end") {
         		    outputFile << "</main>\n";
+        		}
+        		
+        		//form
+        		else if (tagName == "$form_start") {
+        		    if (!className.empty()) {
+        		        outputFile << "<form class=\"" << className << "\">\n";
+        		    } else {
+        		        outputFile << "<form>\n";
+        		    }
+        		}
+				else if (tagName == "$form_end") {
+        		    outputFile << "</form>\n";
         		}
         		
         		//article
@@ -479,6 +492,93 @@ int main() {
                         }
                     }
 				}
+
+				//form control
+				// Input
+				else if (tagName == "$input") {
+				    size_t start = content.find('(');
+				    size_t end = content.find(')');
+				    if (start != string::npos && end != string::npos && end > start) {
+				        string inputDetails = content.substr(start + 1, end - start - 1);
+				        size_t commaPos = inputDetails.find(',');
+				        if (commaPos != string::npos) {
+				            string type = inputDetails.substr(0, commaPos);
+				            string placeholder = inputDetails.substr(commaPos + 1);
+				            if (!className.empty()) {
+				                outputFile << "    <input class=\"" << className << "\" type=\"" << type << "\" placeholder=\"" << placeholder << "\"> \n";
+				            } else {
+				                outputFile << "    <input type=\"" << type << "\" placeholder=\"" << placeholder << "\"> \n";
+				            }
+				        }
+				    }
+				}
+
+				// Textarea
+				else if (tagName == "$textarea") {
+				    size_t start = content.find('(');
+				    size_t end = content.find(')');
+				    if (start != string::npos && end != string::npos && end > start) {
+				        string textareaDetails = content.substr(start + 1, end - start - 1);
+				        size_t commaPos = textareaDetails.find(',');
+				        if (commaPos != string::npos) {
+				            string name = textareaDetails.substr(0, commaPos);
+				            string rowsCols = textareaDetails.substr(commaPos + 1);
+				            size_t rowsPos = rowsCols.find(',');
+				            if (rowsPos != string::npos) {
+				                string rows = rowsCols.substr(0, rowsPos);
+				                string cols = rowsCols.substr(rowsPos + 1);
+				                if (!className.empty()) {
+				                    outputFile << "    <textarea class=\"" << className << "\" name=\"" << name 
+				                               << "\" rows=\"" << rows << "\" cols=\"" << cols << "\"></textarea> \n";
+				                } else {
+				                    outputFile << "    <textarea name=\"" << name 
+				                               << "\" rows=\"" << rows << "\" cols=\"" << cols << "\"></textarea> \n";
+				                }
+				            }
+				        }
+				    }
+				}
+
+				// Label
+				else if (tagName == "$label") {
+				    size_t start = content.find('(');
+				    size_t end = content.find(')');
+				    if (start != string::npos && end != string::npos && end > start) {
+				        string labelDetails = content.substr(start + 1, end - start - 1);
+				        size_t commaPos = labelDetails.find(',');
+				        if (commaPos != string::npos) {
+				            string forId = labelDetails.substr(0, commaPos);
+				            string text = labelDetails.substr(commaPos + 1);
+				            if (!className.empty()) {
+				                outputFile << "    <label class=\"" << className << "\" for=\"" << forId << "\">" 
+				                           << text << "</label> \n";
+				            } else {
+				                outputFile << "    <label for=\"" << forId << "\">" << text << "</label> \n";
+				            }
+				        }
+				    }
+				}
+
+				// Button
+				else if (tagName == "$button") {
+				    size_t start = content.find('(');
+				    size_t end = content.find(')');
+				    if (start != string::npos && end != string::npos && end > start) {
+				        string buttonDetails = content.substr(start + 1, end - start - 1);
+				        size_t commaPos = buttonDetails.find(',');
+				        if (commaPos != string::npos) {
+				            string type = buttonDetails.substr(0, commaPos);
+				            string text = buttonDetails.substr(commaPos + 1);
+				            if (!className.empty()) {
+				                outputFile << "    <button class=\"" << className << "\" type=\"" << type << "\">" 
+				                           << text << "</button> \n";
+				            } else {
+				                outputFile << "    <button type=\"" << type << "\">" << text << "</button> \n";
+				            }
+				        }
+				    }
+				}
+
 			}
         }
         // HTML snippet lines after HTML body in HTML file
