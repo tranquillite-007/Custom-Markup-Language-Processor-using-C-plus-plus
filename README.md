@@ -1,4 +1,4 @@
-# txt-to-html-convertor-in-cpp
+# Custom Markup Language using c++
 
 ### **Documentation**
 
@@ -17,7 +17,7 @@ This code processes custom tags and converts them into HTML elements. It support
 Generates a `<p>` tag. If a `className` is provided, it adds a class attribute.  
 
 **Input:**  
-`$paragraph(This is a paragraph)`  
+`$paragraph = (This is a paragraph)`  
 
 **Output:**  
 - With `className`: `<p class="className">This is a paragraph</p>`  

@@ -161,3 +161,6 @@ $footer_start = ()[py-8 bg-gray-800 text-center text-gray-200]
 $paragraph = (&copy; 2024 MyWebsite. All rights reserved.)
 
 $footer_end
+
+
+

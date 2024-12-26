@@ -13,17 +13,24 @@ using namespace std;
 
 string processTilde(const string& input) {
     string result;
+    bool escapeMode = false;
+
     for (size_t i = 0; i < input.length(); ++i) {
         if (input[i] == '~') {
-            if (i + 1 < input.length() && (input[i + 1] == '(' || input[i + 1] == ')' || input[i + 1] == '[' || input[i + 1] == ']')) {
-                continue;
-            } else {
-                result += input[i];
+            if (i + 1 < input.length()) {
+                char nextChar = input[i + 1];
+                // Handle the characters that need to be escaped
+                if (nextChar == '[' || nextChar == ']' || nextChar == '(' || nextChar == ')' || nextChar == '\'' || nextChar == '"') {
+                    result += nextChar; // Add the escaped character
+                    i++; // Skip the escaped character
+                    continue;
+                }
             }
-        } else {
-            result += input[i];
         }
+        // Append all other characters as-is
+        result += input[i];
     }
+
     return result;
 }
 
